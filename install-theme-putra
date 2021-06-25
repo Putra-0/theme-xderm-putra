@@ -1,3 +1,12 @@
 #!/bin/bash
-wget -O /www/xderm/ --no-check-certificate https://raw.githubusercontent.com/adiputra019/theme-xderm-putra/main/xderm/
+url=https://raw.githubusercontent.com/adiputra019/theme-xderm-putra/main
+wget -O /www/xderm/img/fav.ico --no-check-certificate $url/xderm/img/fav.ico
+wget -O /www/xderm/img/image.png --no-check-certificate $url/xderm/img/image.png
+wget -O /www/xderm/img/background.jpg --no-check-certificate $url/xderm/img/background.jpg
+wget -O /www/xderm/index.php --no-check-certificate $url/xderm/index.php
+wget -O /www/xderm/login.php --no-check-certificate $url/xderm/login.php
+wget -O /www/xderm/login.html --no-check-certificate $url/xderm/login.html
+wget -O /www/xderm/css/login.css --no-check-certificate $url/xderm/css/login.css
+wget -O /www/xderm/css/style.css --no-check-certificate $url/xderm/css/style.css
+wget -O /www/xderm/css/theme.css --no-check-certificate $url/xderm/css/theme.css
 clear;echo "Install Selesai, Silahkan clear cache browser!"
