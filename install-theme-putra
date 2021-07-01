@@ -6,6 +6,8 @@ wget -O /www/xderm/img/background.jpg --no-check-certificate $url/xderm/img/back
 wget -O /www/xderm/index.php --no-check-certificate $url/xderm/index.php
 wget -O /www/xderm/login.php --no-check-certificate $url/xderm/login.php
 wget -O /www/xderm/login.html --no-check-certificate $url/xderm/login.html
+mkdir /www/xderm/css
+chmod 777 /www/xderm/css
 wget -O /www/xderm/css/login.css --no-check-certificate $url/xderm/css/login.css
 wget -O /www/xderm/css/style.css --no-check-certificate $url/xderm/css/style.css
 wget -O /www/xderm/css/theme.css --no-check-certificate $url/xderm/css/theme.css
