@@ -1,4 +1,4 @@
 #!/bin/bash
-url=https://raw.githubusercontent.com/adiputra019/theme-xderm-putra/main
+url=https://raw.githubusercontent.com/Putra-0/theme-xderm-putra/main
 wget -O /www/xderm/limit.php --no-check-certificate $url/xderm/limit.php
 clear;echo "Install Selesai, Silahkan clear cache browser!"
