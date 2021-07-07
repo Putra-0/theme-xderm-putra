@@ -87,7 +87,7 @@ if ( window.history.replaceState ) {
 <?php
   exec('cat /var/update.xderm',$z);
     if ($z[0]) {
- if ( $z[0] != '2.8' ){
+ if ( $z[0] != '2.9' ){
 echo '<pre><h3 style="color:lime">New versi GUI Detected, Please Update!!</h3></pre>';
 };
     };
@@ -223,7 +223,7 @@ echo '<div id="log" class="scroll"></div></pre></div>';
 </table></head>
 <center><br>
 	<div class="nganu slide" style="height:54px">
-        Xderm GUI v.2.8<br>
+        Xderm GUI v.2.9<br>
 		&copy Design by Adi Putra<br>
 		Copyright &copy Ryan Fauzi
     </div><br></center></div>
