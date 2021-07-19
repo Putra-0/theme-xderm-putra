@@ -1,4 +1,4 @@
-# Installation theme xdem by putra
+# Installation theme xderm by putra
 
 wget -O install-theme-putra https://raw.githubusercontent.com/Putra-0/theme-xderm-putra/main/install-theme-putra && bash install-theme-putra
 
