@@ -248,10 +248,8 @@ if ($use_boot <> 'yes' ){ exec('./xderm-mini disable');
 
 if($_POST['button5']){
 echo "<h3  class='nganu slide'><center><b>Xderm Mini Informations</b></center></h3>";
-echo "<center><p align='center'><textarea name='aboutbox' id='aboutbox' rows='9' cols='50' style='
-			border-radius: 0px;
+echo "<center><p align='center'><textarea readonly name='aboutbox' id='aboutbox' rows='9' cols='50' style='
 			padding: 10px 10px;
-			background-color: white; 
 			font-align: center; ! important;' wrap='hard'>
 Xderm Mini is simple injector tool based on shell script and python commands for OpenWrt by @ryanfauzi1 which help you to inject your OpenWrt connection using VPN injection (SSH/Trojan/Vmess).
 

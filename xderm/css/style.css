@@ -151,6 +151,18 @@ body {
 	margin: 5px;
 	top: 0px;
 }
+textarea{
+		border-radius: 0.2rem;
+		background-color: rgba(0,0,0,0);
+		box-shadow: 0 0 10px 0 #0320FC;
+		color:#9D9D9D;
+		}
+textarea:focus {
+        	border-color: #2CC300;
+		color:#9D9D9D;
+       	 	box-shadow: 0 0 5px 0 red inset, 0 0 5px 2px red;   
+		background-color:rgba(8, 8, 8, 0.64);		
+		}
 
 
 @keyframes glowing {
