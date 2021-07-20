@@ -11,8 +11,7 @@ ceklogin();
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="shortcut icon" href="img/ico.png">
 <script type="text/javascript" src="js/jquery-2.1.3.min.js"></script>
-<link rel="stylesheet" href="css/style.css">
-
+<link type="text/css" rel="stylesheet" href="css/style.css">
 <meta charset="UTF-8"><title>Xderm Mini</title>
 <script>
 function shipping_calc() {
@@ -60,11 +59,89 @@ if ( window.history.replaceState ) {
   window.history.replaceState( null, null, window.location.href );
 }
 </script>
+<script type="text/javascript">
+    $(document).ready(function() {
+        setInterval(function() {
+            $.ajax({
+                url: "screenlog.0",
+		cache: false,
+                success: function(result) {
+		    $("#log").html(result);
+                }
+            });
+        $(document).ready(function() {
+                $.ajaxSetup({ cache: false });
+                        });
+                var textarea = document.getElementById("log");
+                textarea.scrollTop = textarea.scrollHeight;
+        }, 1000);
+    });
+if ( window.history.replaceState ) {
+  window.history.replaceState( null, null, window.location.href );
+}
+</script>
+<script type="text/javascript">
+    $(document).ready(function() {
+        setInterval(function() {
+            $.ajax({
+                url: "screenlog.0",
+		cache: false,
+                success: function(result) {
+		    $("#log").html(result);
+                }
+            });
+        $(document).ready(function() {
+                $.ajaxSetup({ cache: false });
+                        });
+                var textarea = document.getElementById("log");
+                textarea.scrollTop = textarea.scrollHeight;
+        }, 1000);
+    });
+if ( window.history.replaceState ) {
+  window.history.replaceState( null, null, window.location.href );
+}
+</script>
+<script type="text/javascript">
+
+    $(document).ready(function() {
+        setInterval(function() {
+            $.ajax({
+                url: "screenlog.0",
+		cache: false,
+                success: function(result) {
+		    $("#log").html(result);
+                }
+            });
+        $(document).ready(function() {
+                $.ajaxSetup({ cache: false });
+                        });
+                var textarea = document.getElementById("log");
+                textarea.scrollTop = textarea.scrollHeight;
+        }, 1000);
+    });	
+	$(document).ready(function(){
+		$('#div_refresh').load("addon.php");
+			setInterval(function(){
+				$('#div_refresh').load("addon.php");
+		},1000);
+	});
+if ( window.history.replaceState ) {
+  window.history.replaceState( null, null, window.location.href );
+}
+</script>
+
 <body>
 <div class="block moving-glow">
 	<center>
-		<a href="login.php" onClick="logout()">
-		<img src="img/image.png" width: 100%></a>
+<?php
+$filename = 'login.php';
+if (file_exists($filename)) {
+    echo '<a href="login.php" onClick="logout()">';
+} else {
+    echo '<a href="index.php" onClick="logout()">';
+}
+?>
+		<img src="img/image.png" width: 90%></a>
 	</center>
     <form method="post">
 		<center>
@@ -79,16 +156,23 @@ if ( window.history.replaceState ) {
 				<button type="submit" name="button2" class="glow-on-hover" id="config"
 					value="Config"/>Config
 				</button>
-				<button type="submit" name="button4" class="glow-on-hover" id="update"
-					value="Update"/>Update
-				</button>
-				<button type="submit" name="button5" class="glow-on-hover" id="about"
+				<button type="submit" name="button5" class="glow-on-hover" id"about"
 					value="About"/>About
 				</button>
 
 				</td></tr>
 			</table>
 		</center>
+<table align="center" style="margin-top:-20px";margin-bottom:10px;">
+	<tr class="col-butt">
+		<h4 id="div_refresh"></h4>
+		<td style="width:150px;padding-top:5px" class="glow-on-hover"><span style="color:red">IP: </span><span id="ip"></span>	
+		</td>
+		<td style="width:200px;padding-top:5px" class="glow-on-hover"><span style="color:red">ISP: </span><span id="isp" ></span></td	
+	
+	</tr>
+</table><br>
+
 <?php
   exec('cat /var/update.xderm',$z);
     if ($z[0]) {
@@ -133,6 +217,12 @@ echo '<script>
   if (isset($_POST['button5'])) {
   exec('echo " " > screenlog.0');
   }
+  if (isset($_POST['button6'])) {
+  exec('echo > screenlog.0');
+  }
+  if (isset($_POST['button7'])) {
+  exec('echo > screenlog.0');
+  }
 ?>
 <table align="center"><tr><td class="box_script"><div class="inline-block"><pre>
 <?php
@@ -167,7 +257,80 @@ echo '<script>
 if ($use_boot <> 'yes' ){ exec('./xderm-mini disable');
 } else { exec('./xderm-mini enable'); }
  exec("cat config/default",$default);
+ exec('echo -e "user=$userlogin\npasswd=$passlogin" > /root/auth.txt');
  }
+
+if($_POST['button5']){
+echo "<h3 class='nganu slide'><center><b>Xderm Mini Informations</b></center></h3>";
+echo "<center><p align='center'><textarea name='aboutbox' id='aboutbox' rows='9' cols='50' style='
+			border-radius: 0px;
+			padding: 10px 10px;
+			background-color: white; 
+			font-align: center; ! important;' wrap='hard'>
+Xderm Mini is simple injector tool based on shell script and python commands for OpenWrt by @ryanfauzi1 which help you to inject your OpenWrt connection using VPN injection (SSH/Trojan/Vmess).
+
+=============================================
+           xdrtool Command Lists           
+=============================================
+Change Username & Password  = 1 / a / A
+Change Username Only        = 2 / u / U
+Change Password Only        = 3 / p / P
+Install Login Page          = 4 / lp / LP
+Remove Login Page           = 5 / rlp/ RLP
+Manual Update               = 6 / mu / MU
+Fix index.php downloading   = 7 / fp / FP
+Install Default Theme       = 8 / dt / DT
+=============================================
+
+=============================================
+          Informasi Configuration          
+=============================================
+Jika <stunnel> dicentang, maka
+tunneling ssh di-inject oleh stunnel client
+Jika tidak, akan digantikan python-https
+
+Jika <go-tun2socks> dicentang, maka
+semua lalu lintas diatur oleh go-tun2socks
+Jika tidak, akan digantikan badvpn-tun2socks
+
+Khusus mode SSH tidak support UDP jika
+Menggunakan go-tun2socks.
+
+khusus pengguna selain FW 18,
+silahkan centang <Restart Firewall>
+Guna mencegah terjadinya notif error.
+=============================================
+
+=============================================
+             Default config.txt             
+=============================================
+host=103.157.1xx.xx
+port=443
+pudp=7300
+user=ryanxxxx
+pass=123xxx
+sni=www.xxx.xx
+vmess://eyJhZGQiOixxxxxxx
+trojan://user@server:port
+=============================================
+</textarea></p></center>";
+echo '<p style="text-align:center; font-size:85%;">Read more info at <a href="https://github.com/ryanfauzi1/xderm-mini_GUI" target="_blank">Xderm Mini Github Repo</a></p></table>';
+echo '<center style="margin-top:10px">
+                                <button type="submit" name="button6" class="glow-on-hover" id="rmlogin" style="width:40%"
+                                        value="Remove / Install Login Page">Remove / Install Login Page</button>
+
+                                <button type="submit" name="button7" class="glow-on-hover"  id="reinstall" style="width:40%"
+                                        value="Force Reinstall Xderm Mini">Force Reinstall Xderm Mini</button>
+										
+                                <button type="submit" name="button4" class="glow-on-hover"  id="update" style="width:50%"
+                                        value="Current Version 3.0 • Check Update">Current Version 3.0 • Check Update</button>
+</center>';
+
+echo '<div class="nganu slide" style="display: flex; height: 110%; flex-shrink: 0; font-weight: bold; font-size: 80%; font-align: center; ! important; padding-bottom: 10px"><p style="text-align:center">
+        Logo & Mods by <a href="https://me.helmiau.my.id" target="_blank">Helmi Amirudin</a> • Theme by <a href="https://www.facebook.com/adi.persada.560/" target="_blank">Adi-Putra</a><br>
+                Main Developer <a href="https://github.com/ryanfauzi1" target="_blank">Ryan Fauzi</a> • Copyright &copy 2021
+    </div>';
+}
 if($_POST['button2']){
 exec("cat config/mode.list|awk 'NR==1'",$adamode);
 $adamode=$adamode[0];
@@ -183,23 +346,23 @@ if ($ada) {
 exec("cat config/default",$default);
 $default=$default[0];
  if ($default) {
-echo "<h4 class='nganu slide'><center><b>profile that is active now: $default</b></center></h4>";
+echo "<h3><center>Current active profile is <b>[ $default ]</b></center></h3>";
 $data = file_get_contents("config/$default");
-echo "<textarea name='configbox' id='isi' placeholder='Masukkan config disini' rows='9' cols='50' wrap='hard'>$data</textarea>";
+echo "<textarea name='configbox' id='isi' placeholder='Masukkan config disini' rows='8' cols='50' wrap='hard'>$data</textarea>";
  } else {
 $data = file_get_contents("config.txt");
-echo "<textarea name='configbox' id='isi' placeholder='Masukkan config disini' rows='9' cols='50' wrap='hard'>$data</textarea>";
+echo "<textarea name='configbox' id='isi' placeholder='Masukkan config disini' rows='8' cols='50' wrap='hard'>$data</textarea>";
  }
 $data1 = file_get_contents("config/config1");
-echo "<textarea name='configbox1' id='isi1' rows='3' cols='10' style='display:none;' wrap='hard'>$data1</textarea>";
+echo "<textarea name='configbox1' id='isi1' rows='3' cols='8' style='display:none;' wrap='hard'>$data1</textarea>";
 $data2 = file_get_contents("config/config2");
-echo "<textarea name='configbox2' id='isi2' rows='3' cols='10' style='display:none;' wrap='hard'>$data2</textarea>";
+echo "<textarea name='configbox2' id='isi2' rows='3' cols='8' style='display:none;' wrap='hard'>$data2</textarea>";
 $data3 = file_get_contents("config/config3");
-echo "<textarea name='configbox3' id='isi3' rows='3' cols='10' style='display:none;' wrap='hard'>$data3</textarea>";
+echo "<textarea name='configbox3' id='isi3' rows='3' cols='8' style='display:none;' wrap='hard'>$data3</textarea>";
 $data4 = file_get_contents("config/config4");
-echo "<textarea name='configbox4' id='isi4' rows='3' cols='10' style='display:none;' wrap='hard'>$data4</textarea>";
+echo "<textarea name='configbox4' id='isi4' rows='3' cols='8' style='display:none;' wrap='hard'>$data4</textarea>";
 $data5 = file_get_contents("config/config5");
-echo "<textarea name='configbox5' id='isi5' rows='3' cols='10' style='display:none;' wrap='hard'>$data5</textarea>";
+echo "<textarea name='configbox5' id='isi5' rows='3' cols='8' style='display:none;' wrap='hard'>$data5</textarea>";
 } else {
 exec("mkdir -p config;touch config/config.list config/config1 config/config2");
 exec("touch config/config3 config/config4 config/config5 config/mode.list");
@@ -210,7 +373,7 @@ exec("echo config4 >> config/config.list");
 exec("echo config5 >> config/config.list");
 exec("echo config1 >> config/default");
 $data = file_get_contents("config.txt");
-echo "<textarea name='configbox' id='isi' rows='9' cols='50' wrap='hard'>$data</textarea>";
+echo "<textarea name='configbox' id='isi' rows='8' cols='50' wrap='hard'>$data</textarea>";
 $config=$_POST['configbox'];
 $conf=$_POST['profile'];
 exec('echo "'.$config.'" > config/'.$conf);
@@ -276,76 +439,59 @@ echo '<input type="checkbox" name="use_waitmodem" value="yes">Waiting Modem '; }
 echo '<input type="checkbox" name="use_boot" value="yes" checked>ON-Boot'; }
 else {
 echo '<input type="checkbox" name="use_boot" value="yes">ON-Boot'; }
-echo  "\n\n";
-echo '<button type="submit" name="simpan" class="glow-on-hover" style="width: 98%; height: 30px; margin-right: 20px; flex-shrink: 0; font-weight: bold; ! important;" value="Save Xderm Settings and VPN Profile"/>Save Xderm Settings and VPN Profile</button></form></div>';
+echo '<br><button type="submit" name="simpan" class="glow-on-hover" style="width: 98%; height: 30px; margin-top: 10px; flex-shrink: 0; ! important;" value="Simpan">Simpan</button></form></div>';
 } else {
-echo '<div id="log" class="scroll"></div></pre></div>';
+echo '<div id="log" class="scroll"></div></pre></div></table>';
 }
-
-if($_POST['button5']){
-echo '<div class="nganu slide" style="display: flex; height: 110%; flex-shrink: 0; font-weight: bold; font-size: 120%; font-align: center; ! important; margin-top: -10%"><p style="text-align:center">
-        Xderm Mini Informations
-    </div>';
-echo "
-<textarea readonly rows='12' cols='50' wrap='hard' style='text-align:center; background-color: #FFFFFF; ! important';>
-Xderm Mini is simple injector tool based on shell script and python commands for OpenWrt by @ryanfauzi1 which help you to inject your OpenWrt connection using VPN injection (SSH/Trojan/Vmess).
-
-===============
-Additional Installation
-===============
-
-Add login page
-wget -O installer-login https://raw.githubusercontent.com/ryanfauzi1/xderm-mini_GUI/main/installer-login && bash installer-login
-
-Remove login page
-wget -O /bin/xderm-rmlogin https://raw.githubusercontent.com/helmiau/openwrt-config/main/rmlogin-xderm && chmod +x /bin/xderm-rmlogin && xderm-rmlogin
-
-Manual Update
-wget -O update-manual https://raw.githubusercontent.com/ryanfauzi1/xderm-mini_GUI/main/update-manual && chmod +x update-manual && ./update-manual
-
-Fix download index.php file
-wget -O /bin/fixphp https://raw.githubusercontent.com/helmiau/openwrt-config/main/fix-xderm-libernet-gui && chmod +x /bin/fixphp && fixphp
-
-===============
-
-===============
-Default auth.txt (WebUI Login Information)
-===============
-Username  : admin
-Password  : xderm
-===============
-Edit /root/auth.txt file or by run xdrauth command using terminal to change password
-===============
-
-===============
-Default config.txt
-===============
-host=103.157.1xx.xx
-port=443
-pudp=7300
-user=ryanxxxx
-pass=123xxx
-sni=www.xxx.xx
-vmess://eyJhZGQiOixxxxxxx
-trojan://user@server:port
-===============
-
-</textarea>
-";
-echo '<p style="text-align:center; font-size:80%;">Read more info at <a href="https://github.com/ryanfauzi1/xderm-mini_GUI">Xderm Mini Github Repo</a></p>';
+if($_POST['button6']){
+if (file_exists("login.php") | file_exists("header.php")) {
+	echo '<p style="text-align:center; font-size:80%;">Login page is available, removing now !</p><br/><br/>';
+    rename("login.php", "login.php.xdrtool");
+    rename("header.php", "header.php.xdrtool");
+	echo '<p style="text-align:center; font-size:80%;">Login page removed ! Refresh this page</p>';
+} elseif (file_exists("login.php.xdrtool") | file_exists("header.php.xdrtool")) {
+	echo '<p style="text-align:center; font-size:80%;">Login page is not available, installing now !<br/><br/>';
+    rename("login.php.xdrtool", "login.php");
+    rename("header.php.xdrtool", "header.php");
+	echo '<p style="text-align:center; font-size:80%;">Login page installed ! Refresh this page</p>';
+} else {
+	echo '<p style="text-align:center; font-size:80%;">Login page is available, now installing online mode !</p><br/><br/>';
+	exec('wget -O /www/xderm/login.php https://raw.githubusercontent.com/ryanfauzi1/xderm-mini_GUI/main/login.php -q');
+	exec('wget -O /www/xderm/header.php https://raw.githubusercontent.com/ryanfauzi1/xderm-mini_GUI/main/header.php -q');
+	echo '<p style="text-align:center; font-size:80%;">Login page installed ! Refresh this page</p>';
+}
+}
+if($_POST['button7']){
+echo 'Force Reinstall Xderm Mini !<br/>';
+echo 'Removing old files<br/>';
+if (file_exists("login.php") | file_exists("header.php")) {
+	exec('wget -O /www/xderm/login.php https://raw.githubusercontent.com/ryanfauzi1/xderm-mini_GUI/main/login.php -q');
+	exec('wget -O /www/xderm/header.php https://raw.githubusercontent.com/ryanfauzi1/xderm-mini_GUI/main/header.php -q');
+} elseif (file_exists("login.php.xdrtool") | file_exists("header.php.xdrtool")) {
+	exec('wget -O /www/xderm/login.php.xdrtool https://raw.githubusercontent.com/ryanfauzi1/xderm-mini_GUI/main/login.php -q');
+	exec('wget -O /www/xderm/header.php.xdrtool https://raw.githubusercontent.com/ryanfauzi1/xderm-mini_GUI/main/header.php -q');
+} else {
+	exec('wget -O /www/xderm/login.php https://raw.githubusercontent.com/ryanfauzi1/xderm-mini_GUI/main/login.php -q');
+	exec('wget -O /www/xderm/header.php https://raw.githubusercontent.com/ryanfauzi1/xderm-mini_GUI/main/header.php -q');
+}
+exec('wget -O /www/xderm/index.html https://raw.githubusercontent.com/ryanfauzi1/xderm-mini_GUI/main/index.html -q');
+exec('wget -O /www/xderm/xderm-mini https://raw.githubusercontent.com/ryanfauzi1/xderm-mini_GUI/main/xderm-mini -q');
+exec('wget -O /www/xderm/js/jquery-2.1.3.min.js https://raw.githubusercontent.com/ryanfauzi1/xderm-mini_GUI/main/jquery-2.1.3.min.js -q');
+exec('wget -O /www/xderm/img/image.png https://raw.githubusercontent.com/ryanfauzi1/xderm-mini_GUI/main/image.png -q');
+exec('wget -O /www/xderm/img/fav.ico https://raw.githubusercontent.com/ryanfauzi1/xderm-mini_GUI/main/fav.ico -q');
+exec('wget -O /www/xderm/img/ico.png https://raw.githubusercontent.com/ryanfauzi1/xderm-mini_GUI/main/ico.png -q');
+exec('wget -O /www/xderm/img/background.jpg https://raw.githubusercontent.com/ryanfauzi1/xderm-mini_GUI/main/background.jpg -q');
+exec('wget -O /bin/xdrauth https://raw.githubusercontent.com/ryanfauzi1/xderm-mini_GUI/main/adds/xdrauth -q');
+exec('chmod +x /bin/xdrauth');
+exec('wget -O /bin/xdrtool https://raw.githubusercontent.com/ryanfauzi1/xderm-mini_GUI/main/adds/xdrtool -q');
+exec('wget -O /www/xderm/index.php https://raw.githubusercontent.com/ryanfauzi1/xderm-mini_GUI/main/index.php -q');
+exec('chmod +x /bin/xdrtool');
+echo 'Installing new files<br/>';
+echo 'Installation done ! Refresh this page<br/>';
 }
 
 ?>
 
-</td></tr>
-</table></head>
-<center><br>
-<footer class="nganu slide">
-	<div  style="font-size: 16px; animation: logo-entry 3s ease-in;">
-	•Logo by Helmi Amirudin•<br>•Design by ADI-PUTRA•<br>
-		Xderm V.3.0 • Copyright &copy Ryan Fauzi
-	</div> 
-	</footer>
-</center>
-</div></div>
+</head>
+</div>
 </html>
