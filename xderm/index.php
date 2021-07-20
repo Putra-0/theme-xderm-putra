@@ -247,7 +247,7 @@ if ($use_boot <> 'yes' ){ exec('./xderm-mini disable');
  }
 
 if($_POST['button5']){
-echo "<h3  class='nganu slide'><center><b>Xderm Mini Informations</b></center></h3>";
+echo "<h3  class='nganu slide' style='margin:-30px 0 -10px 0'><center><b>Xderm Mini Informations</b></center></h3>";
 echo "<center><p align='center'><textarea readonly name='aboutbox' id='aboutbox' rows='9' cols='50' style='
 			padding: 10px 10px;
 			font-align: center; ! important;' wrap='hard'>
