@@ -330,7 +330,7 @@ if ($ada) {
 exec("cat config/default",$default);
 $default=$default[0];
  if ($default) {
-echo "<h3><center><b>Current active profile is [ $default ]</b></center></h3>";
+echo "<h3 class='nganu slide' style='margin:-25px 0 0 0'><center><b>Current active profile is [ $default ]</b></center></h3>";
 $data = file_get_contents("config/$default");
 echo "<textarea name='configbox' id='isi' placeholder='Masukkan config disini' rows='8' cols='50' wrap='hard'>$data</textarea>";
  } else {
