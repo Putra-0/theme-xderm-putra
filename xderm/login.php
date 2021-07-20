@@ -38,7 +38,7 @@ if ($show == "home"){
 	<footer class="nganu slide">
 	<div  style="font-size: 16px; margin-top:15px; animation: logo-entry 3s ease-in;">
 	•Logo by Helmi Amirudin•<br>•Design by ADI-PUTRA•<br>
-		Xderm V.3.0 • Copyright &copy Ryan Fauzi
+		Xderm V.3.1 • Copyright &copy Ryan Fauzi
 	</div> 
 	</footer>
 	</div>
