@@ -1,4 +1,7 @@
 #!/bin/bash
+clear;echo "######################################"
+echo -e "   Auto installer Theme Xderm RGB by Adi-Putra\n######################################\n"
+echo "Installing, Tunggu....."
 url=https://raw.githubusercontent.com/Putra-0/theme-xderm-putra/main
 wget -O /www/xderm/img/ico.png --no-check-certificate $url/xderm/img/ico.png
 wget -O /www/xderm/img/image.png --no-check-certificate $url/xderm/img/image.png
