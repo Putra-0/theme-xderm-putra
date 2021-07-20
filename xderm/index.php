@@ -55,24 +55,19 @@ function shipping_calc() {
                 textarea.scrollTop = textarea.scrollHeight;
         }, 1000);
     });
-if ( window.history.replaceState ) {
-  window.history.replaceState( null, null, window.location.href );
-}
-</script>
-<script type="text/javascript">
     $(document).ready(function() {
         setInterval(function() {
             $.ajax({
-                url: "screenlog.0",
-		cache: false,
+                url: "loglain.txt",
+                cache: false,
                 success: function(result) {
-		    $("#log").html(result);
+                    $("#loglain").html(result);
                 }
             });
         $(document).ready(function() {
                 $.ajaxSetup({ cache: false });
                         });
-                var textarea = document.getElementById("log");
+                var textarea = document.getElementById("loglain");
                 textarea.scrollTop = textarea.scrollHeight;
         }, 1000);
     });
@@ -168,15 +163,15 @@ if (file_exists($filename)) {
 		<h4 id="div_refresh"></h4>
 		<td style="width:150px;padding-top:5px" class="glow-on-hover"><span style="color:red">IP: </span><span id="ip"></span>	
 		</td>
-		<td style="width:230px;padding-top:5px" class="glow-on-hover"><span style="color:red">ISP: </span><span id="isp" ></span></td	
-	
+		<td style="width:200px;padding-top:5px" class="glow-on-hover"><span style="color:red">ISP: </span><span id="isp" ></span></td
 	</tr>
 </table><br>
 
+<table align="center"><tr><td class="box_script"><div class="inline-block"><pre>
 <?php
   exec('cat /var/update.xderm',$z);
     if ($z[0]) {
- if ( $z[0] != '3.0' ){
+ if ( $z[0] != '3.1' ){
 echo '<pre><h3 style="color:lime">New versi GUI Detected, Please Update!!</h3></pre>';
 };
     };
@@ -188,6 +183,7 @@ if ( $o[0] == 'Start' ) {
  exec('chmod +x xderm-mini');
  exec('screen -L -dmS gua ./xderm-mini start');
  exec('echo Stop > log/st');
+ echo "<div id='log' class='scroll'></div></pre>";
 echo '<script>
   document.getElementById("strp").value="Stop";
 </script>';
@@ -197,34 +193,20 @@ echo '<script>
  exec('chmod +x xderm-mini');
  exec('screen -L -dmS gu ./xderm-mini stop');
  exec('echo Start > log/st');
+ echo "<div id='log' class='scroll'></div></pre>";
 echo '<script>
   document.getElementById("strp").value="Start";
 </script>';
 }
   }
-  if (isset($_POST['button2'])) {
-  exec('echo > screenlog.0');
-  }
   if (isset($_POST['button4'])) {
   exec('killall -q xderm-mini');
-  exec('echo > screenlog.0');
   exec('chmod +x xderm-mini');
   exec('screen -L -dmS upd ./xderm-mini update');
-  }
-  if (isset($_POST['button3'])) {
-  exec('cp log/log.txt screenlog.0 2>/dev/null');
-  }
-  if (isset($_POST['button5'])) {
-  exec('echo " " > screenlog.0');
-  }
-  if (isset($_POST['button6'])) {
-  exec('echo > screenlog.0');
-  }
-  if (isset($_POST['button7'])) {
-  exec('echo > screenlog.0');
-  }
+  echo "<div id='loglain' class='scroll'></div></pre>";
+}
+
 ?>
-<table align="center"><tr><td class="box_script"><div class="inline-block"><pre>
 <?php
  if (isset($_POST['simpan'])) {
  $config=$_POST['configbox'];
@@ -238,30 +220,34 @@ echo '<script>
  if ($use_gotun <> 'yes' ){$use_gotun='no';}
  if ($use_restfw <> 'yes' ){$use_restfw='no';}
  if ($use_waitmodem <> 'yes' ){$use_waitmodem='no';}
+ $config = str_replace( "\r", "", $config);
  exec('echo "'.$mode.'" > config/mode.default');
  exec('echo "'.$config.'" > config/'.$conf);
- exec('sed -i \'/mode=/,+0 d\' config/'.$conf);
- exec('sed -i \'s/\r$//g\' config/'.$conf);
- exec('sed -i \':a;N;$!ba;s/\n\n//g\' config/'.$conf);
+ exec('sed \'/host=\|port=\|pudp=\|user=\|pass=\|sni=\|mode=\|trojan\|\n/d\' config/\''.$conf.'\' > /var/vmess1.txt');
+ exec('awk \'{ printf "%s", $0 }\' /var/vmess1.txt > /var/vmess2.txt');
  exec('echo "'.$config.'" > config.txt');
  exec('sed -i \'s/\r$//g\' config.txt');
+ exec('sed -i \'s/\r$//g\' config/'.$conf);
+ exec('sed -i \':a;N;$!ba;s/\n\n//g\' config/'.$conf);
  exec('sed -i \':a;N;$!ba;s/\n\n//g\' config.txt');
+ exec('sed -i \'/^#/!s/mode=.*//\' config/'.$conf);
+ exec('sed -i \'/^#/!s/mode=.*//\' config.txt');
  exec('echo "'.$use_stunnel.'" > config/stun');
  exec('echo "'.$use_gotun.'" > config/gotun');
  exec('echo "'.$use_restfw.'" > config/firewall');
  exec('echo "'.$use_waitmodem.'" > config/modem');
  exec('echo "'.$conf.'" > config/default');
- exec('echo "Config telah di update." > screenlog.0');
- exec('echo "\''.$conf.'\' Menjadi default Config. !" >> screenlog.0');
+ exec('echo "Config telah di update." > loglain.txt');
+ exec('echo "\''.$conf.'\' Menjadi default Config. !" >> loglain.txt');
  $use_boot=$_POST['use_boot'];
+echo "<div id='loglain' class='scroll'></div></pre>";
 if ($use_boot <> 'yes' ){ exec('./xderm-mini disable');
 } else { exec('./xderm-mini enable'); }
  exec("cat config/default",$default);
- exec('echo -e "user=$userlogin\npasswd=$passlogin" > /root/auth.txt');
  }
 
 if($_POST['button5']){
-echo "<h3 class='nganu slide'><center><b>Xderm Mini Informations</b></center></h3>";
+echo "<h3  class='nganu slide'><center><b>Xderm Mini Informations</b></center></h3>";
 echo "<center><p align='center'><textarea name='aboutbox' id='aboutbox' rows='9' cols='50' style='
 			border-radius: 0px;
 			padding: 10px 10px;
@@ -323,7 +309,7 @@ echo '<center style="margin-top:10px">
                                         value="Force Reinstall Xderm Mini">Force Reinstall Xderm Mini</button>
 										
                                 <button type="submit" name="button4" class="glow-on-hover"  id="update" style="width:50%"
-                                        value="Current Version 3.0 • Check Update">Current Version 3.0 • Check Update</button>
+                                        value="Current Version 3.1 • Check Update">Current Version 3.1 • Check Update</button>
 </center>';
 
 echo '<div class="nganu slide" style="display: flex; height: 110%; flex-shrink: 0; font-weight: bold; font-size: 80%; font-align: center; ! important; padding-bottom: 10px"><p style="text-align:center">
@@ -346,7 +332,7 @@ if ($ada) {
 exec("cat config/default",$default);
 $default=$default[0];
  if ($default) {
-echo "<h3><center>Current active profile is <b>[ $default ]</b></center></h3>";
+echo "<h3><center><b>Current active profile is [ $default ]</b></center></h3>";
 $data = file_get_contents("config/$default");
 echo "<textarea name='configbox' id='isi' placeholder='Masukkan config disini' rows='8' cols='50' wrap='hard'>$data</textarea>";
  } else {
@@ -373,7 +359,7 @@ exec("echo config4 >> config/config.list");
 exec("echo config5 >> config/config.list");
 exec("echo config1 >> config/default");
 $data = file_get_contents("config.txt");
-echo "<textarea name='configbox' id='isi' rows='8' cols='50' wrap='hard'>$data</textarea>";
+echo "<textarea name='configbox' id='isi' rows='9' cols='50' wrap='hard'>$data</textarea>";
 $config=$_POST['configbox'];
 $conf=$_POST['profile'];
 exec('echo "'.$config.'" > config/'.$conf);
@@ -440,26 +426,36 @@ echo '<input type="checkbox" name="use_boot" value="yes" checked>ON-Boot'; }
 else {
 echo '<input type="checkbox" name="use_boot" value="yes">ON-Boot'; }
 echo '<br><button type="submit" name="simpan" class="glow-on-hover" style="width: 98%; height: 30px; margin-top: 10px; flex-shrink: 0; ! important;" value="Simpan">Simpan</button></form></div>';
+echo '<div id="logx" class="scr"></div></pre>';
 } else {
-echo '<div id="log" class="scroll"></div></pre></div></table>';
+if(!$_POST['button5']){
+ if (!isset($_POST['simpan'])) {
+  if(!$_POST['button6']){
+   if(!$_POST['button7']){
+    if(!$_POST['button4']){
+echo '<div id="log" class="scroll"></div></pre>';
+    }
+   }
+  }
+ }
+}
 }
 if($_POST['button6']){
 if (file_exists("login.php") | file_exists("header.php")) {
-	echo '<p style="text-align:center; font-size:80%;">Login page is available, removing now !</p><br/><br/>';
-    rename("login.php", "login.php.xdrtool");
-    rename("header.php", "header.php.xdrtool");
-	echo '<p style="text-align:center; font-size:80%;">Login page removed ! Refresh this page</p>';
+ echo 'Loginpage Tersedia, Menghapus...<br/>';
+ rename("login.php", "login.php.xdrtool");
+ rename("header.php", "header.php.xdrtool");
+ echo 'Loginpage Terhapus !';
 } elseif (file_exists("login.php.xdrtool") | file_exists("header.php.xdrtool")) {
-	echo '<p style="text-align:center; font-size:80%;">Login page is not available, installing now !<br/><br/>';
-    rename("login.php.xdrtool", "login.php");
-    rename("header.php.xdrtool", "header.php");
-	echo '<p style="text-align:center; font-size:80%;">Login page installed ! Refresh this page</p>';
+ echo 'Loginpage tidak Tersedia, Menginstall...<br/>';
+ rename("login.php.xdrtool", "login.php");
+ rename("header.php.xdrtool", "header.php");
+ echo 'Loginpage Terinstall !';
 } else {
-	echo '<p style="text-align:center; font-size:80%;">Login page is available, now installing online mode !</p><br/><br/>';
-	exec('wget -O /www/xderm/login.php https://raw.githubusercontent.com/ryanfauzi1/xderm-mini_GUI/main/login.php -q');
-	exec('wget -O /www/xderm/header.php https://raw.githubusercontent.com/ryanfauzi1/xderm-mini_GUI/main/header.php -q');
-	echo '<p style="text-align:center; font-size:80%;">Login page installed ! Refresh this page</p>';
-}
+ echo 'Login page is available, now installing online mode !';
+ exec('wget -O /www/xderm/login.php https://raw.githubusercontent.com/ryanfauzi1/xderm-mini_GUI/main/login.php -q');
+ exec('wget -O /www/xderm/header.php https://raw.githubusercontent.com/ryanfauzi1/xderm-mini_GUI/main/header.php -q');
+ echo 'Login page installed ! Refresh this page'; }
 }
 if($_POST['button7']){
 echo 'Force Reinstall Xderm Mini !<br/>';
@@ -489,9 +485,7 @@ exec('chmod +x /bin/xdrtool');
 echo 'Installing new files<br/>';
 echo 'Installation done ! Refresh this page<br/>';
 }
-
 ?>
-
 </head>
-</div>
+</div></div>
 </html>
