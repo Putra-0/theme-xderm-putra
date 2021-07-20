@@ -312,7 +312,7 @@ echo '<center style="margin-top:10px">
                                         value="Current Version 3.1 • Check Update">Current Version 3.1 • Check Update</button>
 </center>';
 
-echo '<div class="nganu slide" style="display: flex; height: 110%; flex-shrink: 0; font-weight: bold; font-size: 80%; font-align: center; ! important; padding-bottom: 10px"><p style="text-align:center">
+echo '<div class="nganu slide" style="display: flex; height: 110%; flex-shrink: 0; font-weight: bold; font-size: 90%; font-align: center; ! important; padding-bottom: 10px"><p style="text-align:center">
         Logo & Mods by <a href="https://me.helmiau.my.id" target="_blank">Helmi Amirudin</a> • Theme by <a href="https://www.facebook.com/adi.persada.560/" target="_blank">Adi-Putra</a><br>
                 Main Developer <a href="https://github.com/ryanfauzi1" target="_blank">Ryan Fauzi</a> • Copyright &copy 2021
     </div>';
