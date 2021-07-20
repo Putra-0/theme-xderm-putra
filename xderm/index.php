@@ -168,7 +168,7 @@ if (file_exists($filename)) {
 		<h4 id="div_refresh"></h4>
 		<td style="width:150px;padding-top:5px" class="glow-on-hover"><span style="color:red">IP: </span><span id="ip"></span>	
 		</td>
-		<td style="width:200px;padding-top:5px" class="glow-on-hover"><span style="color:red">ISP: </span><span id="isp" ></span></td	
+		<td style="width:230px;padding-top:5px" class="glow-on-hover"><span style="color:red">ISP: </span><span id="isp" ></span></td	
 	
 	</tr>
 </table><br>
