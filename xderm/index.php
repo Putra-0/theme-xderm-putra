@@ -302,13 +302,13 @@ trojan://user@server:port
 </textarea></p></center>";
 echo '<p style="text-align:center; font-size:85%;">Read more info at <a href="https://github.com/ryanfauzi1/xderm-mini_GUI" target="_blank">Xderm Mini Github Repo</a></p></table>';
 echo '<center style="margin-top:10px">
-                                <button type="submit" name="button6" class="glow-on-hover" id="rmlogin" style="width:40%"
+                                <button type="submit" name="button6" class="glow-on-hover" id="rmlogin" style="width:45%"
                                         value="Remove / Install Login Page">Remove / Install Login Page</button>
 
-                                <button type="submit" name="button7" class="glow-on-hover"  id="reinstall" style="width:40%"
+                                <button type="submit" name="button7" class="glow-on-hover"  id="reinstall" style="width:45%"
                                         value="Force Reinstall Xderm Mini">Force Reinstall Xderm Mini</button>
 										
-                                <button type="submit" name="button4" class="glow-on-hover"  id="update" style="width:50%"
+                                <button type="submit" name="button4" class="glow-on-hover"  id="update" style="width:55%"
                                         value="Current Version 3.1 • Check Update">Current Version 3.1 • Check Update</button>
 </center>';
 
