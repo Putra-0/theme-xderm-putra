@@ -225,6 +225,8 @@ echo '<script>
  exec('echo "'.$config.'" > config/'.$conf);
  exec('sed \'/host=\|port=\|pudp=\|user=\|pass=\|sni=\|mode=\|trojan\|\n/d\' config/\''.$conf.'\' > /var/vmess1.txt');
  exec('awk \'{ printf "%s", $0 }\' /var/vmess1.txt > /var/vmess2.txt');
+ exec('sed \'/host=\|port=\|pudp=\|user=\|pass=\|sni=\|mode=\|vmess\|\n/d\' config/\''.$conf.'\' > /var/trojan1.txt');
+ exec('awk \'{ printf "%s", $0 }\' /var/trojan1.txt > /var/trojan2.txt');
  exec('echo "'.$config.'" > config.txt');
  exec('sed -i \'s/\r$//g\' config.txt');
  exec('sed -i \'s/\r$//g\' config/'.$conf);
@@ -330,9 +332,9 @@ if ($ada) {
 exec("cat config/default",$default);
 $default=$default[0];
  if ($default) {
-echo "<h3  class='nganu slide' style='margin:-25px 0 0 0'><center><b>Current active profile is [ $default ]</b></center></h3>";
+echo "<h3 class='nganu slide' style='margin:-25px 0 0 0'><center><b>Current active profile is [ $default ]</b></center></h3>";
 $data = file_get_contents("config/$default");
-echo "<textarea name='configbox' id='isi' spellcheck='false' placeholder='Masukkan config disini' rows='8' cols='50' wrap='hard'>$data</textarea>";
+echo "<textarea name='configbox' spellcheck='false' id='isi' placeholder='Masukkan config disini' rows='8' cols='50' wrap='hard'>$data</textarea>";
  } else {
 $data = file_get_contents("config.txt");
 echo "<textarea name='configbox' id='isi' placeholder='Masukkan config disini' rows='8' cols='50' wrap='hard'>$data</textarea>";
@@ -423,7 +425,7 @@ echo '<input type="checkbox" name="use_waitmodem" value="yes">Waiting Modem '; }
 echo '<input type="checkbox" name="use_boot" value="yes" checked>ON-Boot'; }
 else {
 echo '<input type="checkbox" name="use_boot" value="yes">ON-Boot'; }
-echo '<br><button type="submit" name="simpan" class="glow-on-hover" style="width: 98%; height: 30px; margin-top: 10px; flex-shrink: 0; ! important;" value="Simpan">Simpan</button></form></div>';
+echo '<br><button type="submit" name="simpan" class="glow-on-hover" style="width: 98%; margin-top: 10px; flex-shrink: 0; ! important;" value="Simpan">Simpan</button></form></div>';
 echo '<div id="logx" class="scr"></div></pre>';
 } else {
 if(!$_POST['button5']){
@@ -483,8 +485,7 @@ exec('chmod +x /bin/xdrtool');
 echo 'Installing new files<br/>';
 echo 'Installation done ! Refresh this page<br/>';
 }
-?></td></tr>
-</table>
-</head><br>
-</div></div>
+?>
+</head>
+</div>
 </html>
