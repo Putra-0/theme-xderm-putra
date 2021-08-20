@@ -115,9 +115,9 @@ if ( window.history.replaceState ) {
         }, 1000);
     });	
 	$(document).ready(function(){
-		$('#div_refresh').load("addon.php");
+		$('#div_refresh').load("api.php");
 			setInterval(function(){
-				$('#div_refresh').load("addon.php");
+				$('#div_refresh').load("api.php");
 		},1000);
 	});
 if ( window.history.replaceState ) {
