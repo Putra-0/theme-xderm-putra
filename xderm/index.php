@@ -98,26 +98,10 @@ if ( window.history.replaceState ) {
 </script>
 <script type="text/javascript">
 
-    $(document).ready(function() {
-        setInterval(function() {
-            $.ajax({
-                url: "screenlog.0",
-		cache: false,
-                success: function(result) {
-		    $("#log").html(result);
-                }
-            });
-        $(document).ready(function() {
-                $.ajaxSetup({ cache: false });
-                        });
-                var textarea = document.getElementById("log");
-                textarea.scrollTop = textarea.scrollHeight;
-        }, 1000);
-    });	
 	$(document).ready(function(){
-		$('#div_refresh').load("api.php");
+		$('#rxtx').load("api.php");
 			setInterval(function(){
-				$('#div_refresh').load("api.php");
+				$('#rxtx').load("api.php");
 		},1000);
 	});
 if ( window.history.replaceState ) {
