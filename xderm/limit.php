@@ -17,7 +17,7 @@ ceklogin();
 <html>
 <head>
 <meta name="viewport" content="width=device-width">
-<link rel="shortcut icon" href="img/fav.ico">
+<link rel="shortcut icon" href="img/ico.png">
 <script type="text/javascript" src="js/jquery-2.1.3.min.js"></script>
 <link rel="stylesheet" href="css/style.css">
 <meta charset="UTF-8"><title>Xderm Limitation</title>
